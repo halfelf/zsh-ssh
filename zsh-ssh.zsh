@@ -90,20 +90,26 @@ _ssh-host-list() {
         if (key == "Host") { alias = value }
         if (key == "Hostname") { host_name = value }
         if (key == "#_Desc") { desc = value }
+
+        if (!host_name && alias ) {
+          host_name = alias
+        }
+  
+        if (desc) {
+          desc_formated = sprintf("[\033[00;34m%s\033[0m]", desc)
+        }
+  
+        if ((host_name && !starts_or_ends_with_star(host_name)) && (alias && !starts_or_ends_with_star(alias))) {
+          host = sprintf("%s|->|%s|%s\n", alias, host_name, desc_formated)
+          host_list = host_list host
+
+          host_name = ""
+          alias = ""
+          desc = ""
+          desc_formated = ""
+        }
       }
 
-      if (!host_name && alias ) {
-        host_name = alias
-      }
-
-      if (desc) {
-        desc_formated = sprintf("[\033[00;34m%s\033[0m]", desc)
-      }
-
-      if ((host_name && !starts_or_ends_with_star(host_name)) && (alias && !starts_or_ends_with_star(alias))) {
-        host = sprintf("%s|->|%s|%s\n", alias, host_name, desc_formated)
-        host_list = host_list host
-      }
     }
     END {
       print host_list
@@ -221,3 +227,4 @@ fzf-complete-ssh() {
 
 zle -N fzf-complete-ssh
 bindkey '^I' fzf-complete-ssh
+
