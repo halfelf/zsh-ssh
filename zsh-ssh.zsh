@@ -87,7 +87,13 @@ _ssh-host-list() {
         key = tmp[1]
         value = tmp[2]
 
-        if (key == "Host") { alias = value }
+        if (key == "Host") { 
+          host_name = ""
+          alias = ""
+          desc = ""
+          desc_formated = ""
+          alias = value 
+        }
         if (key == "Hostname") { host_name = value }
         if (key == "#_Desc") { desc = value }
 
@@ -102,11 +108,6 @@ _ssh-host-list() {
         if ((host_name && !starts_or_ends_with_star(host_name)) && (alias && !starts_or_ends_with_star(alias))) {
           host = sprintf("%s|->|%s|%s\n", alias, host_name, desc_formated)
           host_list = host_list host
-
-          host_name = ""
-          alias = ""
-          desc = ""
-          desc_formated = ""
         }
       }
 
