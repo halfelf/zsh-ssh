@@ -20,13 +20,13 @@ Make sure you have [fzf](https://github.com/junegunn/fzf) installed.
 ### Zinit
 
 ```shell
-zinit light sunlei/zsh-ssh
+zinit light halfelf/zsh-ssh
 ```
 
 ### Antigen
 
 ```shell
-antigen bundle sunlei/zsh-ssh
+antigen bundle halfelf/zsh-ssh
 ```
 
 ### Oh My Zsh
@@ -34,7 +34,7 @@ antigen bundle sunlei/zsh-ssh
 1. Clone this repository into `$ZSH_CUSTOM/plugins` (by default `~/.oh-my-zsh/custom/plugins`)
 
     ```shell
-    git clone https://github.com/sunlei/zsh-ssh ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ssh
+    git clone https://github.com/halfelf/zsh-ssh ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-ssh
     ```
 
 2. Add the plugin to the list of plugins for Oh My Zsh to load (inside `~/.zshrc`):
@@ -50,7 +50,7 @@ antigen bundle sunlei/zsh-ssh
 1. Clone this repository somewhere on your machine. For example: `~/.zsh/zsh-ssh`.
 
     ```shell
-    git clone https://github.com/sunlei/zsh-ssh ~/.zsh/zsh-ssh
+    git clone https://github.com/halfelf/zsh-ssh ~/.zsh/zsh-ssh
     ```
 
 2. Add the following to your `.zshrc`:
@@ -74,7 +74,7 @@ You can use `#_Desc` to set description.
 ```text
 Host Bastion-Host
     Hostname 1.1.1.1
-    User sunlei
+    User somebody 
 
 Host Development-Host
     Hostname 2.2.2.2
